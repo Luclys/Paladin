@@ -1,8 +1,9 @@
 Discord = require('discord.js');// Import the discord.js module
 const client = new Discord.Client();// Create an instance of a Discord client
-const config = require("./config.json");
+//const config = require("./config.json");
 const fs = require("fs");
-const prefixe = config.prefixe;// Préfixe : défini sur "//"
+//const prefixe = config.prefixe;// Préfixe : défini sur "//"
+const prefixe = "//";
 // The ready event is vital, it means that your bot will only start reacting to information
 client.on('ready', () => {
   console.log('Paladin Bot Initialisé avec succès.');
@@ -143,4 +144,4 @@ client.on('message', message => {
   }
 })
 // Log your bot in
-client.login(config.token);
+client.login(process.env.TOKEN);
