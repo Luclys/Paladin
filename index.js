@@ -53,13 +53,16 @@ client.on('message', message => {
         // If the message is "hh:mm" at "hh:mm:ss" where ss=mm=hh ex: "01:01" at "01:01:01"
         if (message.createdAt.getSeconds() == hh) {
           message.reply('Un perfect pour toi !');
+          console.log("Parfait !! "+message.author.username + " à écrit "+ hh+":"+hh+" à "+hh+":"+hh+":"+hh);
         }
         // If the message is "01:01" at "01:01:00" or "01:01:59"
         else if ((message.createdAt.getSeconds() == '00') || (message.createdAt.getSeconds() == '59')) {
           message.reply('Waw, excellent !');
+          console.log("Excellent !! "+message.author.username + " à écrit "+ hh+":"+mm+" à"+message.createdAt.getSeconds()+"seconde");
         }
         // If the message is "01:01" at "01:01:ss avec ss != 59, 00, 01"
         else  message.reply('Gg ! \:smiley:');
+              console.log(message.author.username + " à écrit "+ hh+":"+mm+" à l'heure !");
         }
           // If the message is "01:01" at "01:00"
         else if ((message.createdAt.getHours() == hh) && (message.createdAt.getMinutes() == ((mm)-1)) || (hh == 23 && mm == 59)  ) {
@@ -68,8 +71,10 @@ client.on('message', message => {
                        '\n Ca veut dire t\'es qu\'une merde hein \:smiley:';
           let rep1 = 'it\'s too soon, U little piece of sh*t';
           let rep2 = 'Hahaha, noob.';
-          let rep = [rep0,rep1,rep2]
+          let rep3 = 'U suck noobie'
+          let rep = [rep0,rep1,rep2,rep3]
           message.reply(rep[((Math.floor(Math.random() * (rep.length+1)))%(rep.length))]);
+          console.log(message.author.username + " s'est trompé et a répondu une minute trop tôt !");
         }
         // If the message is "01:01" at "01:02"
       else if ((message.createdAt.getHours() == hh ) && (message.createdAt.getMinutes() == (((mm)-(-1))%24))) {
@@ -82,10 +87,12 @@ client.on('message', message => {
           let rep4 = 'TOO LATEEEE MOTHERFUCKEEER'
           let rep = [rep0,rep1,rep2,rep3,rep4]
           message.reply(rep[((Math.floor(Math.random() * (rep.length+1)))%(rep.length))]);
+          console.log(message.author.username + " s'est trompé et a répondu une minute trop tard !");
         }
       // If the message is "01:01" at ("XX:XX" != "01:01")
     else {
       message.reply('Nope.');
+      console.log(message.author.username + " s'est trompé et a reçu un nope !");
     }
   }
 }
