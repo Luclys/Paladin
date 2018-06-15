@@ -151,4 +151,4 @@ client.on('message', message => {
   }
 })
 // Log your bot in
-client.login(process.env.TOKEN);
+process.env.LOGIN;
