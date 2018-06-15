@@ -167,5 +167,5 @@ function decrypt(text){
   dec += decipher.final('utf8');
   return dec;
 }
-const token = decrypt(process.env.CRYPTED_TOKEN));
+const token = decrypt(process.env.CRYPTED_TOKEN);
 client.login(token);
