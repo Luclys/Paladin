@@ -154,8 +154,8 @@ client.on('message', message => {
   }
 })
 // Log your bot in
-// client.login(config.token);
-
+// Crypter / décrypter le tokrn ( déprécié, à changer...)
+//https://gist.github.com/chris-rock/993d8a22c7138d1f0d2e#file-crypto-ctr-js
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
     password = process.env.PSSWD;
