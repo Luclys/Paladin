@@ -151,4 +151,15 @@ client.on('message', message => {
   }
 })
 // Log your bot in
-process.env.LOGIN;
+var crypto = require('crypto'),
+    algorithm = 'aes-256-ctr',
+    password = process.env.PSSWD;
+
+function decrypt(text){
+  var decipher = crypto.createDecipher(algorithm,password)
+  var dec = decipher.update(text,'hex','utf8')
+  dec += decipher.final('utf8');
+  return dec;
+}
+const token = decrypt(process.env.CRYPTED_TOKEN));
+client.login(token);
