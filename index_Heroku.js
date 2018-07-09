@@ -7,10 +7,6 @@ client.on('ready', () => {
   console.log('Paladin Bot Initialisé avec succès.');
 });
 
-function shouldlisten(message) {
-  if (!message.content.startsWith(prefixe) || message.author.bot) return false;
-}
-
 //Pings & Pongs
 // Create an event listener for messages
 client.on('message', message => {
@@ -65,7 +61,7 @@ client.on('message', message => {
         }
         // If the message is "01:01" at "01:01:ss avec ss != 59, 00, 01"
         else  message.reply('Gg ! \:smiley:');
-              console.log(message.author.username + " à écrit "+ m_hh+":"+m_mm+" à l'heure !");
+              console.log("GG !"+message.author.username + " à écrit "+ m_hh+":"+m_mm+" à l'heure ! (s="+s_ss+")");
         }
           // If the message is "01:01" at "01:00"
         else if ((s_hh == m_hh) && (s_mm == ((m_mm)-1)) || (m_hh == 23 && m_mm == 59)  ) {
@@ -132,7 +128,7 @@ client.on('message', message => {
 });
 
 
-// ?????????????
+// ????????????? probablement quelques tests !
 client.on('message', message => {
   if (!message.content.startsWith(prefixe) || message.author.bot) return;
   // If the message is "ping"
@@ -144,6 +140,8 @@ client.on('message', message => {
     message.channel.send(message.mentions.members.first());
   }
 });
+// Jeux de Rôle sur Robert:
+
 
 //Conneries pour le fun:
 
@@ -154,7 +152,7 @@ client.on('message', message => {
   }
 })
 // Log your bot in
-// Crypter / décrypter le tokrn ( déprécié, à changer...)
+// Crypter / décrypter le token ( déprécié, à changer...)
 //https://gist.github.com/chris-rock/993d8a22c7138d1f0d2e#file-crypto-ctr-js
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
