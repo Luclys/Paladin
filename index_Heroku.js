@@ -1,38 +1,89 @@
-Discord = require('discord.js');// Import the discord.js module
-const client = new Discord.Client();// Create an instance of a Discord client
 const fs = require("fs");
-const prefixe = "//";
+const Discord = require('discord.js');// Import the discord.js module
+
+const {prefix} = require('./config.json');
+
+const client = new Discord.Client();// Create an instance of a Discord client
+client.commands = new Discord.Collection();
+const cooldowns = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.name, command);
+}
+
+
 // The ready event is vital, it means that your bot will only start reacting to information
 client.on('ready', () => {
-  console.log('Paladin Bot Initialisé avec succès.');
-});
+  console.log(client.user.tag+': Bot Initialisé avec succès.');
+ });
 
-//Pings & Pongs
-// Create an event listener for messages
-client.on('message', message => {
-  if (!message.content.startsWith(prefixe) || message.author.bot) return;
-  // If the message is "ping"
-  if (message.content.toUpperCase() === prefixe+'ping'.toUpperCase()) {
-    // Send "pong" to the same channel
-    message.channel.send('pong !');
+
+ client.on('message', message => {
+ 	if (!message.content.startsWith(prefix) || message.author.bot) return;//Ne commence pas par le préfixe, ou est écrit par un Bot: return
+
+ 	const args = message.content.slice(prefix.length).split(/ +/);
+ 	const commandName = args.shift().toLowerCase();
+
+
+  const command = client.commands.get(commandName)
+      || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
+
+  if (!command) {
+    console.log(`La commande ${commandName} est inconnue.`);
+    return;
+   }
+
+  if (command.guildOnly && message.channel.type !== 'text') return message.reply('Je ne peux pas faire ça quand on n\'est qu\'entre nous choux <3');
+
+
+  if (command.args && !args.length) {
+    let reply = `You didn't provide any arguments, ${message.author}!`;
+      if (command.usage) {
+          reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+      }
+    return message.channel.send(reply);
   }
-});
-client.on('message', message => {
-  if (!message.content.startsWith(prefixe) || message.author.bot) return;
-  if (message.content.toUpperCase() === prefixe+'pong'.toUpperCase()) {
-    message.channel.send('ping !');
+
+
+
+  if (!cooldowns.has(command.name)) {
+      cooldowns.set(command.name, new Discord.Collection());
   }
-});
-//Liste des commandes
-client.on('message', message => {
-  if (!message.content.startsWith(prefixe) || message.author.bot) return;
-  // If the message is "ping"
-  if (message.content.toUpperCase() === prefixe+'help'.toUpperCase()) {
-    // Send "pong" to the same channel
-    message.channel.send('Commandes ping et pong pour avoir la réponse du bot');
-    message.channel.send('Autres commandes: @random, avatar')
+
+  const now = Date.now();
+  const timestamps = cooldowns.get(command.name);
+  const cooldownAmount = (command.cooldown || 3) * 1000;
+
+  if (!timestamps.has(message.author.id)) {
+    timestamps.set(message.author.id, now);
+    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
   }
-});
+  else {
+    const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+    if (now < expirationTime) {
+        const timeLeft = (expirationTime - now) / 1000;
+        return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+    }
+
+    timestamps.set(message.author.id, now);
+    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+  }
+
+
+
+ 	try {
+ 		command.execute(message, args);
+ 	}
+ 	catch (error) {
+ 		console.error(error);
+ 		message.reply('Il m\'est impossible d\'accéder à votre demande, il y a eu une erreur ! :O');
+ 	}
+ });
+
 
 //Testeur du message sur l'heure.
 client.on('message', message => {
@@ -96,6 +147,7 @@ client.on('message', message => {
   }
 }
 });
+
 //Server greeting
 // Create an event listener for new guild members
 client.on('guildMemberAdd', member => {
@@ -104,41 +156,6 @@ client.on('guildMemberAdd', member => {
   // Do nothing if the channel wasn't found on this server
   if (!channel) return; // Send the message, mentioning the member
   channel.send(`Bienvenue sur le serveur p\'tite merde, ah, non pardon, ${member}, ouais, bah... c\'est bien ce que je disais.`);
-});
-
-client.on('message', message => {
-  if (!message.content.startsWith(prefixe) || message.author.bot) return;
-  if (message.content.toUpperCase() === prefixe+'@random'.toUpperCase()){
-    let guild_members_id = message.guild.members.keyArray();
-    let alea_int = ((Math.floor(Math.random() * (message.guild.memberCount+1)))%(message.guild.memberCount));
-    let alea_member = `<@${guild_members_id[alea_int]}>`;
-    message.channel.send(alea_member);
-  }
-})
-
-//afficher l'avatar de celui qui est @mentionné
-client.on('message', message => {
-  if (!message.content.startsWith(prefixe) || message.author.bot) return;
-  if ((message.content.slice(2,8)).toUpperCase() == "AVATAR") {
-    let member = message.mentions.members.first();
-    message.delete('2000');
-    if (member != null) return (message.reply(member.user.avatarURL))
-    else return (message.reply(message.author.avatarURL));  // Send the user's avatar URL
-    }
-});
-
-
-// ????????????? probablement quelques tests !
-client.on('message', message => {
-  if (!message.content.startsWith(prefixe) || message.author.bot) return;
-  // If the message is "ping"
-  if (message.content.startsWith(prefixe+'t')) {
-    // Send "pong" to the same channel
-    // console.log(message.mentions.members);
-    // console.log(message.mentions.members.values());
-    console.log(message.mentions.members.first());
-    message.channel.send(message.mentions.members.first());
-  }
 });
 // Jeux de Rôle sur Robert:
 
@@ -151,6 +168,7 @@ client.on('message', message => {
     if (random <= 2) return message.reply('Tg Jo, tu pues...');
   }
 })
+
 // Log your bot in
 // Crypter / décrypter le token ( déprécié, à changer...)
 //https://gist.github.com/chris-rock/993d8a22c7138d1f0d2e#file-crypto-ctr-js
