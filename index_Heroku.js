@@ -47,8 +47,6 @@ client.on('ready', () => {
     return message.channel.send(reply);
   }
 
-
-
   if (!cooldowns.has(command.name)) {
       cooldowns.set(command.name, new Discord.Collection());
   }
@@ -73,10 +71,8 @@ client.on('ready', () => {
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
   }
 
-
-
  	try {
- 		command.execute(message, args);
+ 		command.execute(message, args, client);
  	}
  	catch (error) {
  		console.error(error);
@@ -165,9 +161,10 @@ client.on('guildMemberAdd', member => {
 client.on('message', message => {
   if (message.author.id == '212672410367819776') {
     let random = (Math.floor(Math.random() * 101))
-    if (random <= 2) return message.reply('Tg Jo, tu pues...');
+    if (random <= 2) return message.channel.send('Tg Jo, tu pues...', { tts: true });
   }
 })
+
 
 // Log your bot in
 // Crypter / décrypter le token ( déprécié, à changer...)

@@ -1,7 +1,7 @@
 module.exports = {
 	hidden:false,
   name: '@random',
-  aliases: ['@r'],
+  aliases: ['@r', '@rand'],
   description: 'Renvoie un membre aléatoire de la guilde.',
   cooldown: 0,
   guildOnly: false,
