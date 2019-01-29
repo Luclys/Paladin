@@ -18,6 +18,7 @@ for (const file of commandFiles) {
 // The ready event is vital, it means that your bot will only start reacting to information
 client.on('ready', () => {
   console.log(client.user.tag+': Bot Initialisé avec succès.');
+  client.users.get("144177543145062400").createDM().send("client.user.tag été initialisé.");
  });
 
 
@@ -104,11 +105,11 @@ client.on('message', message => {
         // If the message is "01:01" at "01:01:00" or "01:01:59"
         else if ((s_ss == '00') || (s_ss == '59')) {
           message.reply('Waw, excellent !');
-          console.log("Excellent !! "+message.author.username + " à écrit "+ m_hh+":"+m_mm+" à"+s_ss+"seconde");
+          console.log("Excellent !! "+message.author.username + " à écrit "+ m_hh+":"+m_mm+" à "+s_ss+" seconde(s)");
         }
         // If the message is "01:01" at "01:01:ss avec ss != 59, 00, 01"
         else  message.reply('Gg ! \:smiley:');
-              console.log("GG !"+message.author.username + " à écrit "+ m_hh+":"+m_mm+" à l'heure ! (s="+s_ss+")");
+              console.log("GG ! "+message.author.username + " à écrit "+ m_hh+":"+m_mm+" à l'heure ! (s="+s_ss+")");
         }
           // If the message is "01:01" at "01:00"
         else if ((s_hh == m_hh) && (s_mm == ((m_mm)-1)) || (m_hh == 23 && m_mm == 59)  ) {
@@ -117,8 +118,10 @@ client.on('message', message => {
                        '\n Ca veut dire t\'es qu\'une merde hein \:smiley:';
           let rep1 = 'it\'s too soon, U little piece of sh*t';
           let rep2 = 'Hahaha, noob.';
-          let rep3 = 'U suck noobie'
-          let rep = [rep0,rep1,rep2,rep3]
+          let rep3 = 'Mais... pourquoi tu fais ça D: prends ton temps, t\'avais UNE MINUTE entière devant toi !';
+          let rep4 = 'Rien ne sert de courir, il faut partir à point !';
+          let rep5 = 'U suck noobie';
+          let rep = [rep0,rep1,rep2,rep3,rep4,rep5];
           message.reply(rep[((Math.floor(Math.random() * (rep.length+1)))%(rep.length))]);
           console.log(message.author.username + " s'est trompé et a répondu une minute trop tôt !");
         }
@@ -129,9 +132,9 @@ client.on('message', message => {
           '\n Ca veut dire t\'es qu\'une merde hein \:smiley:';
           let rep1 = 'it\'s too late, U little piece of sh*t';
           let rep2 = 'Hahaha, noob.';
-          let rep3 = 'U suck noobie'
-          let rep4 = 'TOO LATEEEE MOTHERFUCKEEER'
-          let rep = [rep0,rep1,rep2,rep3,rep4]
+          let rep3 = 'U suck noobie';
+          let rep4 = 'TOO LATEEEE MOTHERFUCKEEER';
+          let rep = [rep0,rep1,rep2,rep3,rep4];
           message.reply(rep[((Math.floor(Math.random() * (rep.length+1)))%(rep.length))]);
           console.log(message.author.username + " s'est trompé et a répondu une minute trop tard !");
         }
@@ -157,7 +160,7 @@ client.on('guildMemberAdd', member => {
 
 
 //Conneries pour le fun:
-
+//Tg Jo, tu pues
 client.on('message', message => {
   if (message.author.id == '212672410367819776') {
     let random = (Math.floor(Math.random() * 101))
@@ -165,6 +168,15 @@ client.on('message', message => {
   }
 })
 
+//Quel Savant ce Jérémy !
+client.on('message', message => {
+  //if (message.author.id == '368065417555476480') {
+  if (message.author.id == '144177543145062400') {
+    let random = (Math.floor(Math.random() * 101))
+    //if (random <= 1) return message.channel.send('Oh, waw, quel humain, il rivaliserai presque avec mon processeur !', { tts: true });message.channel.send('... Calme toi, j\'ai dis **presque** hein D:');
+    return message.channel.send('Oh, waw, quel humain, il rivaliserai presque avec mon processeur !', { tts: true });message.channel.send('... Calme toi, j\'ai dis **presque** hein D:');
+  }
+})
 
 // Log your bot in
 // Crypter / décrypter le token ( déprécié, à changer...)
