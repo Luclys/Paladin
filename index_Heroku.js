@@ -18,7 +18,7 @@ for (const file of commandFiles) {
 // The ready event is vital, it means that your bot will only start reacting to information
 client.on('ready', () => {
   console.log(client.user.tag+': Bot Initialisé avec succès.');
-  client.users.get("144177543145062400").send("client.user.tag été initialisé.");
+  client.users.get("144177543145062400").send(client.user.tag "a été initialisé.");
  });
 
 
