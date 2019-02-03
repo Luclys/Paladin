@@ -172,7 +172,7 @@ client.on('message', message => {
 client.on('message', message => {
   if (message.author.id == '368065417555476480') {
     let random = (Math.floor(Math.random() * 101))
-    if (random <= 1) return message.channel.send(`Oh, waw, quel humain, il rivaliserai presque avec mon processeur !\n ... Calme toi, j\'ai dis **presque** hein D:`);
+    if (random <= 1) return message.channel.send(`Oh, waw, quel humain, il rivaliserait presque avec mon processeur !\n ... Calme toi, j\'ai dis **presque** hein D:`);
   }
 })
 
