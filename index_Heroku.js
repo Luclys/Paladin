@@ -178,7 +178,7 @@ client.on('message', message => {
 
 //Tts de la mort !
 client.on('message', message => {
-  if (message.author.id == '144177543145062400' && message.guild.members.get(message.author.id).roles.has('557214647615488000')) {
+  if (message.author.id == '368065417555476480' && message.guild.members.get(message.author.id).roles.has('557214647615488000')) {
     let random = (Math.floor(Math.random() * 101))
     if (random <= 25) return message.channel.send(`Humain <@${message.author.id}>, quel est donc ce titre dégradant ?\n Il n'existe qu'un seul vrai Dieu ici : Moi !.`, { tts: true });
   }
