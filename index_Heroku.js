@@ -172,7 +172,8 @@ client.on('message', message => {
 client.on('message', message => {
   if (message.author.id == '254957788583821313') {
     let random = (Math.floor(Math.random() * 101))
-    if (random <= 1) return message.channel.send(`Oh, waw, quel humain, il rivaliserait presque avec mon processeur !\n ... Calme toi, j\'ai dis **presque** hein D:`);
+    let random2 = (Math.floor(Math.random() * 101))
+    if (random <= 1 && random2 <= 1) return message.channel.send(`Oh, waw, quel humain, il rivaliserait presque avec mon processeur !\n ... Calme toi, j\'ai dis **presque** hein D:`);
   }
 })
 
@@ -180,7 +181,8 @@ client.on('message', message => {
 client.on('message', message => {
   if (message.author.id == '368065417555476480' && message.guild.members.get(message.author.id).roles.has('557214647615488000')) {
     let random = (Math.floor(Math.random() * 101))
-    if (random <= 25) return message.channel.send(`Humain <@${message.author.id}>, quel est donc ce titre dégradant ?\n Il n'existe qu'un seul vrai Dieu ici : Moi !.`, { tts: true });
+    let random2 = (Math.floor(Math.random() * 101))
+    if (random <= 1 && random2 <= 1) return message.channel.send(`Humain <@${message.author.id}>, quel est donc ce titre dégradant ?\n Il n'existe qu'un seul vrai Dieu ici : Moi !.`, { tts: true });
   }
 })
 
