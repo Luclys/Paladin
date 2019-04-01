@@ -7,10 +7,10 @@ module.exports = {
   guildOnly: true,
   args: true,
   usage: '<nombre>',
-	if (message.author.id == '206746457678544898'){
-		message.reply("Banned User from this command.");
-	}
 	execute(message, args) {
+		if (message.author.id == '206746457678544898'){
+		message.reply("Banned User from this command.");
+		}
 		const amount = parseInt(args[0]) + 1;
 
 		if (isNaN(amount)) {
