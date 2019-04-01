@@ -7,6 +7,9 @@ module.exports = {
   guildOnly: true,
   args: true,
   usage: '<nombre>',
+	if (message.author.id == '206746457678544898'){
+		message.reply("Banned User from this command.");
+	}
 	execute(message, args) {
 		const amount = parseInt(args[0]) + 1;
 
