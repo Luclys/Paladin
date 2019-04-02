@@ -91,7 +91,7 @@ client.on('message', message => {
     let pattern_match = message.content.match(/\d{2}:\d{2}/).join();
     let m_hh = (pattern_match[0]+pattern_match[1]);// message_heures
     let m_mm = (pattern_match[3]+pattern_match[4]);//message_minutes
-    let diff_timezone = 1;
+    let diff_timezone = 0; // 0 = heure d'été 1 = heure d'hivers en FR
     let s_hh = ((message.createdAt.getHours()+diff_timezone)%24);//serveur_heures
     let s_mm = message.createdAt.getMinutes();//serveur_minutes
     let s_ss = message.createdAt.getSeconds();//serveur_secondes
