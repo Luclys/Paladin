@@ -161,12 +161,12 @@ client.on('guildMemberAdd', member => {
 
 //Conneries pour le fun:
 //Tg Jo, tu pues
-client.on('message', message => {
-  if (message.author.id == '212672410367819776') {
-    let random = (Math.floor(Math.random() * 101))
-    if (random <= 2) return message.channel.send('Tg Jo, tu pues...', { tts: true });
-  }
-})
+//client.on('message', message => {
+//  if (message.author.id == '212672410367819776') {
+//    let random = (Math.floor(Math.random() * 101))
+//    if (random <= 2) return message.channel.send('Tg Jo, tu pues...', { tts: true });
+//  }
+//})
 
 //Quel Savant ce Tristan !
 client.on('message', message => {
@@ -177,7 +177,7 @@ client.on('message', message => {
   }
 })
 
-//Tts de la mort !
+//Jérémy au grade dégradant (Dieu) :
 client.on('message', message => {
   if (message.author.id == '368065417555476480' && message.guild.members.get(message.author.id).roles.has('557214647615488000')) {
     let random = (Math.floor(Math.random() * 101))
