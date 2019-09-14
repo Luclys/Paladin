@@ -123,7 +123,7 @@ client.on('message', message => {
           let rep5 = 'U suck noobie';
           let rep = [rep0,rep1,rep2,rep3,rep4,rep5];
           message.reply(rep[((Math.floor(Math.random() * (rep.length+1)))%(rep.length))]);
-          console.log(message.author.username + " s'est trompé et a répondu une minute trop tôt !");
+          console.log(message.author.username + " s'est trompé et a répondu une minute trop tôt ! (s="+s_ss+" seconde(s)";
         }
         // If the message is "01:01" at "01:02"
       else if ((s_hh == m_hh ) && (s_mm == (((m_mm)-(-1))%24))) {
@@ -136,12 +136,12 @@ client.on('message', message => {
           let rep4 = 'TOO LATEEEE MOTHERFUCKEEER';
           let rep = [rep0,rep1,rep2,rep3,rep4];
           message.reply(rep[((Math.floor(Math.random() * (rep.length+1)))%(rep.length))]);
-          console.log(message.author.username + " s'est trompé et a répondu une minute trop tard !");
+          console.log(message.author.username + " s'est trompé et a répondu une minute trop tard ! (s="+s_ss+" seconde(s)");
         }
       // If the message is "01:01" at ("XX:XX" != "01:01")
     else {
       message.reply('Nope.');
-      console.log(message.author.username + " s'est trompé et a reçu un nope !");
+      console.log(message.author.username + " s'est trompé et a reçu un nope ! (s="+s_ss+" seconde(s)");
     }
   }
 }
