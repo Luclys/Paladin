@@ -115,7 +115,7 @@ client.on('message', message => {
         else if ((s_hh == m_hh) && (s_mm == ((m_mm)-1)) || (m_hh == 23 && m_mm == 59)  ) {
           let rep0 = 'Hahaha, dommage t\'as loupé de peu :p. Mais t\'en fais pas, on t\'en veut pas, on s\'en souviendra c\'est tout ! :p '+
                        '\n ...'+
-                       '\n Ca veut dire t\'es qu\'une merde hein \:smiley:';
+                       '\nÇa veut dire t\'es qu\'une merde hein \:smiley:';
           let rep1 = 'it\'s too soon, U little piece of sh*t';
           let rep2 = 'Hahaha, noob.';
           let rep3 = 'Mais... pourquoi tu fais ça D: prends ton temps, t\'avais UNE MINUTE entière devant toi !';
