@@ -88,7 +88,7 @@ client.on('message', message => {
   let pattern_match_nojoin = message.content.match(/\d{2}:\d{2}/);
   //On vérifie la présence d'une occurence du pattern
   if (pattern_match_nojoin != null ) {
-    let diff_timezone = 1; // 2 = heure d'été 1 = heure d'hivers en FR
+    let diff_timezone = 2; // 2 = heure d'été 1 = heure d'hivers en FR
     let pattern_match = message.content.match(/\d{2}:\d{2}/).join();
     let m_hh = (pattern_match[0]+pattern_match[1]);// message_heures
     let m_mm = (pattern_match[3]+pattern_match[4]);//message_minutes
