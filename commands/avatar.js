@@ -8,9 +8,15 @@ module.exports = {
   args: false,
   usage: '<arguments> <...>',
   execute(message, args) {
-    let member = message.mentions.members.first();
-    // message.delete('2000');
-    if (member != null) return (message.reply(member.user.avatarURL))
-    else return (message.reply(message.author.avatarURL));  // Send the user's avatar URL
+    let users = message.mentions.users;
+
+    let ImageURLOptions = {};
+    ImageURLOptions.format = "jpg"
+    ImageURLOptions.dynamic = true
+    ImageURLOptions.size = 4096
+
+    if (users) {
+      users.forEach(user => message.reply(user.displayAvatarURL(ImageURLOptions)));
+    } else return (message.reply(message.author.displayAvatarURL(ImageURLOptions)));  // Send the user's avatar URL
   },
 };

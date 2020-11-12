@@ -14,12 +14,11 @@ module.exports = {
   execute(message, args) {
     args = args[0].toUpperCase();
     message.channel.send('Commande pour terminer mettre à jour le message d\'infos non codée, à plus tard ;)');
-    if (args == "NAME") {
+    if (args === "NAME") {
       message.channel.send(`Le nom du JDR associé à ce channel est: ${message.channel.name}.`)
 
 
-    }
-    else if (args == "STATUS") {
+    } else if (args === "STATUS") {
       // if (status == 'Complété') {
       //   status = 'En cours'
       // }
@@ -31,18 +30,15 @@ module.exports = {
       //
       // }
 
-    }
-    else if (args == "INFO") {
+    } else if (args === "INFO") {
       if (message.channel.topic == "") {
         message.channel.send(`Définissez le sujet du salon ${message.channel} afin d\'utiliser cette commande.`)
       } else {
         message.channel.send(`Le plot de ${message.channel.name} est:\n${message.channel.topic}`)
       }
-    }
-    else if (args == "USER") {
+    } else if (args === "USER") {
 
-    }
-    else {
+    } else {
 
     }
   },
