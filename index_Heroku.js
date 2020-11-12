@@ -1,3 +1,4 @@
+const os = require('os');
 const fs = require("fs");
 const Discord = require('discord.js');// Import the discord.js module
 
@@ -19,7 +20,8 @@ for (const file of commandFiles) {
 // The ready event is vital, it means that your bot will only start reacting to information
 client.on('ready', () => {
     console.log(client.user.tag + ': Bot Initialisé avec succès.');
-    client.users.fetch(authorUserID, true).then(user => user.send(`${client.user.tag} a été initialisé.`))
+    client.users.fetch(authorUserID, true).then(user => user.send(
+        `${client.user.tag} a été initialisé sur la machine : **${os.hostname()}**, sous l'os : ${os.platform}.`))
 });
 
 
