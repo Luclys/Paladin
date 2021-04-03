@@ -1,5 +1,3 @@
-const permFlags = require('../../Resources/permissionFlags.js');
-
 module.exports = {
 	hidden: true,
 	name: 'kick',
