@@ -2,13 +2,17 @@
   "name": "paladin-bot",
   "version": "1.0.0",
   "description": "\"1ere version test de Paladin\"",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
   "author": "Luclys",
   "license": "ISC",
+  "main": "index_Heroku.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Luclys/Paladin.git"
+  },
   "dependencies": {
-    "discord.js": "^12.4.1"
+    "discord.js": "^12.5.3"
+  },
+  "scripts": {
+    "start": "node index_Heroku.js"
   }
 }
