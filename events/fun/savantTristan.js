@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'message',
+    name: 'messageCreate',
     once: true,
     execute(message) {
         // Conneries pour le fun:

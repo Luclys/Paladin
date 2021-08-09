@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'message',
+    name: 'messageCreate',
     once: false,
     execute(message, client) {
         //On prend le pattern "hh:mm", on utilise le regex: /\d{2}:\d{2}/

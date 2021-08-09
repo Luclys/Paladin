@@ -1,7 +1,7 @@
 module.exports = {
     name: 'jdrdelete',
     aliases: ['jdrremove', 'jdrsuppr'],
-    description: 'Supprime une campagne de JDR',
+    description: '❌ Not implemented. Supprime une campagne de JDR',
     //cooldown: 3,
     guildOnly: true,
     permissions: '',
