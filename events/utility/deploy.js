@@ -8,7 +8,7 @@ module.exports = {
 
         if (message.content.toLowerCase() === prefix + 'deploy' && message.author.id === client.application?.owner.id) {
 
-            const commands = await client.guilds.cache.get('428279062667067422')?.commands.set(client.commandsList);
+            const commands = await client.application?.commands.set(client.commandsList);
             console.log(commands);
         }
     },
