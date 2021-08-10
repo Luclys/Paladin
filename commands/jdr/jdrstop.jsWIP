@@ -1,7 +1,7 @@
 module.exports = {
   name: 'jdrstop',
   aliases: ['jdrfin', 'jdrend'],
-  description: 'Termine la session de JDR actuellement en cours.',
+  description: '❌ Not implemented. Termine la session de JDR actuellement en cours.',
   //cooldown: 3,
   guildOnly: true,
   permissions: '',

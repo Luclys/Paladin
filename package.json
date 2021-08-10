@@ -4,15 +4,18 @@
   "description": "\"1ere version test de Paladin\"",
   "author": "Luclys",
   "license": "ISC",
-  "main": "index_Heroku.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/Luclys/Paladin.git"
   },
-  "dependencies": {
-    "discord.js": "^12.5.3"
-  },
   "scripts": {
-    "start": "node index_Heroku.js"
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^13.0.1"
+  },
+  "devDependencies": {
+    "discord-api-types": "^0.22.0"
   }
 }

@@ -1,7 +1,7 @@
 module.exports = {
   name: 'jdrstart',
   aliases: ['jdrdebut', 'jdrdébut'],
-  description: 'Initialise le début de la session de JDR',
+  description: '❌ Not implemented. Initialise le début de la session de JDR',
   //cooldown: 3,
   guildOnly: true,
   permissions: '',

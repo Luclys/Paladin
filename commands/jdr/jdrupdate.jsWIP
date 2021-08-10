@@ -1,7 +1,7 @@
 module.exports = {
     name: 'jdrupdate',
     aliases: ['jdrupdt'],
-    description: "Met à jour les infos concernant le JDR.\n" +
+    description: "❌ Not implemented.  Met à jour les infos concernant le JDR.\n" +
         "[name] récupère le nom du salon et update le message d\'infos. " +
         "[intrigue] Récupère le sujet du salon et update le message d'infos. " +
         "[status] Permet de modifier le status du JDR: completé, en cours, en pause (alternativement). " +
@@ -14,7 +14,7 @@ module.exports = {
     usage: '[Name] OU [Info] OU [Status] OU [User] OU [GameMaster]',
     execute(message, args) {
         args = args[0].toUpperCase();
-        message.channel.send('Commande pour terminer mettre à jour le message d\'infos non codée, à plus tard ;)');
+        message.channel.send('Commande pour terminer, mettre à jour le message d\'infos non codée, à plus tard ;)');
         if (args === "NAME") {
             message.channel.send(`Le nom du JDR associé à ce channel est: ${message.channel.name}.`)
 
