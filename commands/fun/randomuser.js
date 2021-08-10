@@ -7,8 +7,8 @@ module.exports = {
     guildOnly: true,
     permissions: '',
     execute(interaction) {
-        interaction.guild.members.fetch().then(gmbrs => {
-                interaction.reply("Le membre aléatoirement choisi est : " + gmbrs.randomKey());
+        return interaction.guild.members.fetch().then(gmbrs => {
+                interaction.reply("Le membre aléatoirement choisi est : <@" + gmbrs.randomKey() + ">.");
             }
         );
     },

@@ -66,29 +66,8 @@ module.exports = {
             setTimeout(() => timestamps.delete(authorId), cooldownAmount);
         }
 
-        function replySuccess() {
-            const successButton = new MessageActionRow()
-                .addComponents(
-                    new MessageButton()
-                        .setCustomId('cmdSuccess')
-                        .setLabel('succès')
-                        .setStyle('SUCCESS')
-                        .setDisabled(true)
-                        .setEmoji("✅"),
-                );
-
-            if (!interaction.replied) {
-                return interaction.reply({
-                    content: "Commande effectuée avec succès.",
-                    components: [successButton],
-                    ephemeral: true
-                });
-            }
-        }
-
         try {
             await command.execute(interaction, client);
-            replySuccess();
         } catch (error) {
             console.error(error);
             resetCD(client, interaction, interaction.commandName);

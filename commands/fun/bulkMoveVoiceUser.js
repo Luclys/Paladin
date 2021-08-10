@@ -1,4 +1,5 @@
 const {ApplicationCommandOptionType} = require("discord-api-types/v9");
+const {MessageActionRow, MessageButton} = require("discord.js");
 
 module.exports = {
     hidden: false,
@@ -27,7 +28,7 @@ module.exports = {
         const toVoiceChannel = interaction.options.getChannel('destination');
 
         // Check if the given channel is a Voice channel
-        if (toVoiceChannel.type !== 'voice') {
+        if (toVoiceChannel.type !== 'GUILD_VOICE') {
             return interaction.reply({
                 content: `Le channel ${toVoiceChannel.name} n'est pas un channel Audio.`,
                 ephemeral: true
@@ -41,7 +42,27 @@ module.exports = {
             });
         }
 
+        function replySuccess() {
+            const successButton = new MessageActionRow()
+                .addComponents(
+                    new MessageButton()
+                        .setCustomId('cmdSuccess')
+                        .setLabel('succès')
+                        .setStyle('SUCCESS')
+                        .setDisabled(true)
+                        .setEmoji("✅")
+                );
+
+            if (!interaction.replied) {
+                return interaction.reply({
+                    content: "Commande effectuée avec succès.",
+                    components: [successButton]
+                });
+            }
+        }
+
         // Bulk move user from fromVoiceChannel to toVoiceChannel
         fromVoiceChannel.members.forEach(member => member.voice.setChannel(toVoiceChannel))
+        return replySuccess();
     },
 };

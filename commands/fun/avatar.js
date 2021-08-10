@@ -23,11 +23,5 @@ module.exports = {
         ImageURLOptions.size = 4096
 
         return interaction.reply(user.displayAvatarURL(ImageURLOptions));
-
-        /*
-                if (users.size !== 0) {
-                    users.forEach(user => interaction.reply(user.displayAvatarURL(ImageURLOptions)));
-                } else interaction.reply(interaction.author.displayAvatarURL(ImageURLOptions));// Send the author's avatar URL
-        */
     },
 };
