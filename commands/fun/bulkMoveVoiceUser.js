@@ -25,7 +25,7 @@ module.exports = {
             });
         }
         // Check if the channelId given in args is existant
-        const toVoiceChannel = interaction.options.getChannel('destination');
+        const toVoiceChannel = interaction.options.getChannel(this.options[0].name);
 
         // Check if the given channel is a Voice channel
         if (toVoiceChannel.type !== 'GUILD_VOICE') {
@@ -42,6 +42,11 @@ module.exports = {
             });
         }
 
+        // Bulk move user from fromVoiceChannel to toVoiceChannel
+        fromVoiceChannel.members.forEach(member => member.voice.setChannel(toVoiceChannel))
+
+        return replySuccess();
+
         function replySuccess() {
             const successButton = new MessageActionRow()
                 .addComponents(
@@ -55,14 +60,11 @@ module.exports = {
 
             if (!interaction.replied) {
                 return interaction.reply({
-                    content: "Commande effectuée avec succès.",
+                    content: fromVoiceChannel.members.size + " membres ont été déplacés dans le channel, comme demandé !",
                     components: [successButton]
                 });
             }
         }
 
-        // Bulk move user from fromVoiceChannel to toVoiceChannel
-        fromVoiceChannel.members.forEach(member => member.voice.setChannel(toVoiceChannel))
-        return replySuccess();
     },
 };

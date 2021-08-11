@@ -2,7 +2,7 @@ const {prefix} = require('../../config.json');
 
 module.exports = {
     name: 'messageCreate',
-    once: false,
+    once: true,
     async execute(message, client) {
         if (!client.application?.owner) await client.application?.fetch();
 

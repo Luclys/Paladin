@@ -15,7 +15,7 @@ module.exports = {
     guildOnly: false,
     permissions: '',
     execute(interaction) {
-        const user = interaction.options.getUser('utilisateur');
+        const user = interaction.options.getUser(this.options[0].name);
 
         let ImageURLOptions = {};
         ImageURLOptions.format = "jpg"
