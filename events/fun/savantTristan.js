@@ -1,6 +1,6 @@
 module.exports = {
     name: 'messageCreate',
-    once: true,
+    once: false,
     execute(message) {
         // Conneries pour le fun:
         // Quel Savant ce Tristan !
