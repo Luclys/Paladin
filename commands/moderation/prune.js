@@ -52,7 +52,7 @@ module.exports = {
 
             if (!interaction.replied) {
                 return interaction.reply({
-                    content: "Spécialement pour toi mon choix, j'ai demandé à Discord d'effacer les " + amount + " derniers messages !",
+                    content: "Spécialement pour toi mon choux, j'ai demandé à Discord d'effacer les " + amount + " derniers messages !",
                     components: [successButton]
                 });
             }
