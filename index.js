@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const {Client, Collection, Intents} = require("discord.js");
 
 // Create an instance of a Discord client
-const client = new Client({intents: [Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILDS]});
+const client = new Client({intents: [Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MESSAGES , Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILDS]});
 
 // Official community-driven guide : https://discordjs.guide/
 client.commands = new Collection();
