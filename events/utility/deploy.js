@@ -10,6 +10,7 @@ module.exports = {
 
             const commands = await client.application?.commands.set(client.commandsList);
             console.log(commands);
+            message.reply(commands.length() + " commands deployeds.");
         }
     },
 };
