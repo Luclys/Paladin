@@ -6,13 +6,12 @@ module.exports = {
         let pattern_match_nojoin = message.content.match(/\d{2}:\d{2}/);
         //On vérifie la présence d'une occurrence du pattern
         if (pattern_match_nojoin != null) {
-            let diff_timezone = 2; // 2 = heure d'été 1 = heure d'hivers en FR
-
             let pattern_match = pattern_match_nojoin.join();
+            
             let mess_hour = parseInt((pattern_match[0] + pattern_match[1]));// message_heures
             let mess_minute = parseInt(pattern_match[3] + pattern_match[4]);// message_minutes
 
-            let serv_hour = ((message.createdAt.getHours() + diff_timezone) % 24);// serveur_heures
+            let serv_hour = message.createdAt.getHours();// serveur_heures
             let serv_minute = message.createdAt.getMinutes();// serveur_minutes
             let serv_second = message.createdAt.getSeconds();// serveur_secondes
 
