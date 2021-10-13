@@ -15,8 +15,8 @@ module.exports = {
             let serv_minute = message.createdAt.getMinutes();// serveur_minutes
             let serv_second = message.createdAt.getSeconds();// serveur_secondes
 
-            // Check if the message is xx:xx and xx < 24
-            if (mess_hour === mess_minute && mess_hour < 24) {
+            // Check if the message is xx < 24 and xx:xx
+            if (mess_hour < 24 && mess_hour === mess_minute) {
                 // check if the message is on time.
                 if (serv_hour === mess_hour) {
                     if (serv_minute === mess_minute) {
@@ -39,12 +39,12 @@ module.exports = {
                         }
                     } else {
                         // If the message is too soon
-                        let possibleResponses = new Array(10);
+                        let possibleResponses = [];
                         possibleResponses.push('Hahaha, dommage t\'as loupé de peu :p. Mais t\'en fais pas, on t\'en veut pas, on s\'en souviendra c\'est tout ! :p ' +
                             '\n ...' +
-                            '\nÇa veut dire t\'es qu\'une merde hein \:smiley:');
+                            '\nÇa veut dire t\'es qu\'une merde hein \:smiley:.');
                         possibleResponses.push('Hahaha, noob.');
-                        possibleResponses.push('U suck noobie');
+                        possibleResponses.push('U suck noobie.');
                         possibleResponses.push('if(notTheRightHour) then[InsulteDesDaronnes]');
 
                         if (serv_minute === (mess_minute - 1) || (serv_hour === 23 && serv_minute === 59)) {
